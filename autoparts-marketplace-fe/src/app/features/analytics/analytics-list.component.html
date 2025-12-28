@@ -1,0 +1,10 @@
+<div class="analytics-container">
+  <h2>Analytics</h2>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <ul>
+    <li *ngFor="let item of analytics">
+      <span>{{ item.metric }}: {{ item.value }}</span>
+    </li>
+  </ul>
+  <div *ngIf="analytics.length === 0">No analytics data found.</div>
+</div>

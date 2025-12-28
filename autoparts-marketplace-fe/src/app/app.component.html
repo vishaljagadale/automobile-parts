@@ -1,0 +1,35 @@
+<ng-container *ngIf="isLoggedIn; else publicLayout">
+	<div class="container-fluid app-shell">
+		<div class="row min-vh-100">
+			<aside class="col-12 col-md-3 col-lg-2 sidebar py-3">
+				<div class="d-flex align-items-center mb-4 px-3">
+					<div class="fw-bold h5 mb-0">Autoparts</div>
+				</div>
+				<nav class="nav flex-column px-3">
+					<a class="nav-link" routerLink="/products" routerLinkActive="active">
+						<i class="bi bi-box-seam me-2"></i> Products
+					</a>
+					<a class="nav-link" routerLink="/orders" routerLinkActive="active">
+						<i class="bi bi-receipt-cutoff me-2"></i> Orders
+					</a>
+					<a class="nav-link disabled" tabindex="-1" aria-disabled="true">
+						<i class="bi bi-credit-card me-2"></i> Payments
+					</a>
+					<a class="nav-link disabled" tabindex="-1" aria-disabled="true">
+						<i class="bi bi-graph-up me-2"></i> Analysis
+					</a>
+				</nav>
+				<div class="mt-auto px-3 pt-3 border-top small">
+					<button class="btn btn-sm btn-outline-primary w-100" (click)="logout()">Logout</button>
+				</div>
+			</aside>
+			<main class="col-12 col-md-9 col-lg-10 py-3">
+				<router-outlet></router-outlet>
+			</main>
+		</div>
+	</div>
+</ng-container>
+
+<ng-template #publicLayout>
+	<router-outlet></router-outlet>
+</ng-template>

@@ -1,0 +1,25 @@
+<div class="orders-container">
+  <h2>Orders</h2>
+  <div class="controls">
+    <input type="text" placeholder="Search by ID or status" [(ngModel)]="searchTerm" aria-label="Search orders" />
+    <select [(ngModel)]="sortBy" aria-label="Sort orders">
+      <option value="id">Sort by ID</option>
+      <option value="total">Sort by Total</option>
+    </select>
+  </div>
+  <div *ngIf="loading" class="spinner" aria-live="polite" aria-busy="true"></div>
+  <div *ngIf="error" class="error" role="alert">{{ error }}</div>
+  <div *ngIf="!loading && paginatedOrders.length === 0" class="empty" role="status">No orders found.</div>
+  <div class="orders-list" *ngIf="paginatedOrders.length">
+    <div class="order-card" *ngFor="let order of paginatedOrders" tabindex="0" [attr.aria-label]="'Order #' + order.id">
+      <h3>Order #{{ order.id }}</h3>
+      <p>{{ order.status }}</p>
+      <span class="total">{{ order.total | currency }}</span>
+    </div>
+  </div>
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button (click)="setPage(currentPage - 1)" [disabled]="currentPage === 1" aria-label="Previous page">&lt;</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="setPage(currentPage + 1)" [disabled]="currentPage === totalPages" aria-label="Next page">&gt;</button>
+  </div>
+</div>

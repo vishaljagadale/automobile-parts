@@ -1,0 +1,119 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Add Product</h2>
+  <form [formGroup]="productForm" (ngSubmit)="addProduct()" class="row g-3">
+    <div class="col-md-6">
+      <label for="sku" class="form-label">SKU</label>
+      <input id="sku" formControlName="sku" class="form-control" />
+      <div *ngIf="productForm.get('sku')?.touched && productForm.get('sku')?.invalid" class="error">
+        <span *ngIf="productForm.get('sku')?.errors?.['required']">SKU is required.</span>
+      </div>
+      <div *ngIf="backendErrors['sku']" class="error">{{ backendErrors['sku'] }}</div>
+    </div>
+    <div class="col-md-6">
+      <label for="name" class="form-label">Name</label>
+      <input id="name" formControlName="name" class="form-control" />
+      <div *ngIf="productForm.get('name')?.touched && productForm.get('name')?.invalid" class="error">
+        <span *ngIf="productForm.get('name')?.errors?.['required']">Name is required.</span>
+        <span *ngIf="productForm.get('name')?.errors?.['minlength']">Name must be at least 2 characters.</span>
+        <span *ngIf="productForm.get('name')?.errors?.['maxlength']">Name must be at most 100 characters.</span>
+      </div>
+      <div *ngIf="backendErrors['name']" class="error">{{ backendErrors['name'] }}</div>
+    </div>
+    <div class="col-md-4">
+      <label for="categoryId" class="form-label">Category</label>
+      <input id="categoryId" formControlName="categoryId" type="number" class="form-control" />
+      <div *ngIf="productForm.get('categoryId')?.touched && productForm.get('categoryId')?.invalid" class="error">
+        <span *ngIf="productForm.get('categoryId')?.errors?.['required']">Category is required.</span>
+      </div>
+      <div *ngIf="backendErrors['categoryId']" class="error">{{ backendErrors['categoryId'] }}</div>
+    </div>
+    <div class="col-md-4">
+      <label for="subCategoryId" class="form-label">Subcategory</label>
+      <input id="subCategoryId" formControlName="subCategoryId" type="number" class="form-control" />
+      <div *ngIf="productForm.get('subCategoryId')?.touched && productForm.get('subCategoryId')?.invalid" class="error">
+        <span *ngIf="productForm.get('subCategoryId')?.errors?.['required']">Subcategory is required.</span>
+      </div>
+      <div *ngIf="backendErrors['subCategoryId']" class="error">{{ backendErrors['subCategoryId'] }}</div>
+    </div>
+    <div class="col-md-4">
+      <label for="brandId" class="form-label">Brand</label>
+      <input id="brandId" formControlName="brandId" type="number" class="form-control" />
+      <div *ngIf="productForm.get('brandId')?.touched && productForm.get('brandId')?.invalid" class="error">
+        <span *ngIf="productForm.get('brandId')?.errors?.['required']">Brand is required.</span>
+      </div>
+      <div *ngIf="backendErrors['brandId']" class="error">{{ backendErrors['brandId'] }}</div>
+    </div>
+    <div class="col-md-4">
+      <label for="vehicleTypeId" class="form-label">Vehicle Type</label>
+      <input id="vehicleTypeId" formControlName="vehicleTypeId" type="number" class="form-control" />
+      <div *ngIf="productForm.get('vehicleTypeId')?.touched && productForm.get('vehicleTypeId')?.invalid" class="error">
+        <span *ngIf="productForm.get('vehicleTypeId')?.errors?.['required']">Vehicle type is required.</span>
+      </div>
+      <div *ngIf="backendErrors['vehicleTypeId']" class="error">{{ backendErrors['vehicleTypeId'] }}</div>
+    </div>
+    <div class="col-md-4">
+      <label for="model" class="form-label">Model</label>
+      <input id="model" formControlName="model" class="form-control" />
+      <div *ngIf="productForm.get('model')?.touched && productForm.get('model')?.invalid" class="error">
+        <span *ngIf="productForm.get('model')?.errors?.['required']">Model is required.</span>
+      </div>
+      <div *ngIf="backendErrors['model']" class="error">{{ backendErrors['model'] }}</div>
+    </div>
+    <div class="col-md-4">
+      <label for="year" class="form-label">Year</label>
+      <input id="year" formControlName="year" type="number" class="form-control" />
+      <div *ngIf="productForm.get('year')?.touched && productForm.get('year')?.invalid" class="error">
+        <span *ngIf="productForm.get('year')?.errors?.['required']">Year is required.</span>
+        <span *ngIf="productForm.get('year')?.errors?.['min']">Year must be at least 1900.</span>
+        <span *ngIf="productForm.get('year')?.errors?.['max']">Year must be at most 2100.</span>
+      </div>
+      <div *ngIf="backendErrors['year']" class="error">{{ backendErrors['year'] }}</div>
+    </div>
+    <div class="col-md-4">
+      <label for="price" class="form-label">Price</label>
+      <input id="price" formControlName="price" type="number" class="form-control" />
+      <div *ngIf="productForm.get('price')?.touched && productForm.get('price')?.invalid" class="error">
+        <span *ngIf="productForm.get('price')?.errors?.['required']">Price is required.</span>
+        <span *ngIf="productForm.get('price')?.errors?.['min']">Price must be positive.</span>
+      </div>
+      <div *ngIf="backendErrors['price']" class="error">{{ backendErrors['price'] }}</div>
+    </div>
+    <div class="col-md-4">
+      <label for="quantity" class="form-label">Quantity</label>
+      <input id="quantity" formControlName="quantity" type="number" class="form-control" />
+      <div *ngIf="productForm.get('quantity')?.touched && productForm.get('quantity')?.invalid" class="error">
+        <span *ngIf="productForm.get('quantity')?.errors?.['required']">Quantity is required.</span>
+        <span *ngIf="productForm.get('quantity')?.errors?.['min']">Quantity must be at least 1.</span>
+      </div>
+      <div *ngIf="backendErrors['quantity']" class="error">{{ backendErrors['quantity'] }}</div>
+    </div>
+    <div class="col-md-4 d-flex align-items-center mt-4">
+      <div class="form-check">
+        <input id="approved" formControlName="approved" type="checkbox" class="form-check-input" />
+        <label for="approved" class="form-check-label">Approved</label>
+      </div>
+    </div>
+    <div class="col-12">
+      <label for="imageUrls" class="form-label">Image URLs (comma separated)</label>
+      <input id="imageUrls" formControlName="imageUrls" placeholder="url1,url2" class="form-control" />
+      <div *ngIf="productForm.get('imageUrls')?.touched && productForm.get('imageUrls')?.invalid" class="error">
+        <span *ngIf="productForm.get('imageUrls')?.errors?.['required']">At least one image is required.</span>
+      </div>
+      <div *ngIf="backendErrors['imageUrls']" class="error">{{ backendErrors['imageUrls'] }}</div>
+    </div>
+    <div class="col-12">
+      <label for="specifications" class="form-label">Specifications (JSON)</label>
+      <textarea id="specifications" formControlName="specifications" placeholder='{"key":"value"}' class="form-control" rows="3"></textarea>
+      <div *ngIf="productForm.get('specifications')?.touched && productForm.get('specifications')?.invalid" class="error">
+        <span *ngIf="productForm.get('specifications')?.errors?.['required']">Specifications are required.</span>
+      </div>
+      <div *ngIf="backendErrors['specifications']" class="error">{{ backendErrors['specifications'] }}</div>
+    </div>
+    <div class="col-12 mt-3">
+      <button type="submit" class="btn btn-primary" [disabled]="loading || productForm.invalid">Add Product</button>
+    </div>
+    <div class="col-12 mt-2" *ngIf="error">
+      <div class="alert alert-danger py-2">{{ error }}</div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,10 @@
+<div class="review-container">
+  <h2>Reviews</h2>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <ul>
+    <li *ngFor="let review of reviews">
+      <span>{{ review.user }}: {{ review.comment }} ({{ review.rating }}/5)</span>
+    </li>
+  </ul>
+  <div *ngIf="reviews.length === 0">No reviews found.</div>
+</div>

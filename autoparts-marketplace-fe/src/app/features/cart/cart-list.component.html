@@ -1,0 +1,54 @@
+<div class="cart-container">
+  <h2>Your Cart</h2>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <ul>
+    <li *ngFor="let item of cartItems">
+      <span>{{ item.productName }} - {{ item.quantity }}</span>
+      <button (click)="removeItem(item.id)">Remove</button>
+    </li>
+  </ul>
+  <div *ngIf="cartItems.length === 0">Your cart is empty.</div>
+
+  <div class="address-form">
+    <h3>Shipping Address</h3>
+    <form [formGroup]="addressForm">
+      <div>
+        <input type="text" placeholder="Street" formControlName="street" />
+        <div *ngIf="addressForm.get('street')?.touched && addressForm.get('street')?.invalid" class="error">
+          <span *ngIf="addressForm.get('street')?.errors?.['required']">Street is required.</span>
+        </div>
+        <div *ngIf="backendErrors['street']" class="error">{{ backendErrors['street'] }}</div>
+      </div>
+      <div>
+        <input type="text" placeholder="City" formControlName="city" />
+        <div *ngIf="addressForm.get('city')?.touched && addressForm.get('city')?.invalid" class="error">
+          <span *ngIf="addressForm.get('city')?.errors?.['required']">City is required.</span>
+        </div>
+        <div *ngIf="backendErrors['city']" class="error">{{ backendErrors['city'] }}</div>
+      </div>
+      <div>
+        <input type="text" placeholder="State" formControlName="state" />
+        <div *ngIf="addressForm.get('state')?.touched && addressForm.get('state')?.invalid" class="error">
+          <span *ngIf="addressForm.get('state')?.errors?.['required']">State is required.</span>
+        </div>
+        <div *ngIf="backendErrors['state']" class="error">{{ backendErrors['state'] }}</div>
+      </div>
+      <div>
+        <input type="text" placeholder="Zip" formControlName="zip" />
+        <div *ngIf="addressForm.get('zip')?.touched && addressForm.get('zip')?.invalid" class="error">
+          <span *ngIf="addressForm.get('zip')?.errors?.['required']">Zip is required.</span>
+        </div>
+        <div *ngIf="backendErrors['zip']" class="error">{{ backendErrors['zip'] }}</div>
+      </div>
+      <div>
+        <input type="text" placeholder="Country" formControlName="country" />
+        <div *ngIf="addressForm.get('country')?.touched && addressForm.get('country')?.invalid" class="error">
+          <span *ngIf="addressForm.get('country')?.errors?.['required']">Country is required.</span>
+        </div>
+        <div *ngIf="backendErrors['country']" class="error">{{ backendErrors['country'] }}</div>
+      </div>
+    </form>
+  </div>
+  <button (click)="checkout()" [disabled]="loading || cartItems.length === 0">Checkout</button>
+  <div *ngIf="loading">Placing order...</div>
+</div>

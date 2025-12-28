@@ -1,0 +1,122 @@
+/* Global spare parts theme */
+html, body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	background-color: #f5f5f7; /* faint light base */
+	color: #111827;
+	overflow-x: hidden;
+	position: relative;
+}
+
+/* Soft, faint abstract background */
+body::before {
+	content: '';
+	position: fixed;
+	top: -20%;
+	left: -20%;
+	width: 140%;
+	height: 140%;
+	background:
+		radial-gradient(circle at 15% 20%, rgba(251, 146, 60, 0.18), transparent 55%),
+		radial-gradient(circle at 80% 0%, rgba(59, 130, 246, 0.15), transparent 55%),
+		radial-gradient(circle at 0% 85%, rgba(52, 211, 153, 0.18), transparent 55%),
+		linear-gradient(135deg, #f9fafb 0%, #e5e7eb 40%, #f9fafb 100%);
+	filter: blur(30px);
+	opacity: 0.85;
+	z-index: -1;
+}
+
+app-root {
+	min-height: 100vh;
+	display: block;
+}
+
+/* Light cards/nav on faint background */
+.card,
+.navbar {
+	background-color: rgba(255, 255, 255, 0.92) !important;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border-color: rgba(209, 213, 219, 0.8);
+}
+
+.card-body {
+	color: #111827;
+}
+
+.form-control,
+.form-select {
+	background-color: rgba(255, 255, 255, 0.95);
+	border-color: #d1d5db;
+	color: #111827;
+}
+
+.form-control::placeholder,
+.form-select::placeholder {
+	color: #9ca3af;
+}
+
+.form-control:focus,
+.form-select:focus {
+	box-shadow: 0 0 0 0.15rem rgba(249, 115, 22, 0.35);
+	border-color: #f97316;
+}
+
+.error {
+	color: #b91c1c;
+}
+
+/* ORANGE THEME OVERRIDES */
+
+/* Primary orange buttons */
+.btn-primary,
+.btn-success {
+	background-color: #f97316 !important; /* orange */
+	border-color: #ea580c !important;
+}
+
+.btn-primary:hover,
+.btn-success:hover {
+	background-color: #ea580c !important;
+	border-color: #c2410c !important;
+}
+
+.btn-outline-light,
+.btn-outline-primary {
+	color: #f97316 !important;
+	border-color: #fdba74 !important;
+	background-color: transparent !important;
+}
+
+.btn-outline-light:hover,
+.btn-outline-primary:hover {
+	background-color: #ffedd5 !important;
+	border-color: #f97316 !important;
+}
+
+.page-link {
+	color: #f97316;
+}
+
+.page-item.active .page-link {
+	background-color: #f97316;
+	border-color: #f97316;
+}
+
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .show > .nav-link,
+.nav-link.active {
+	color: #f97316 !important;
+}
+
+.link-primary {
+	color: #f97316;
+}
+
+.link-primary:hover {
+	color: #ea580c;
+}

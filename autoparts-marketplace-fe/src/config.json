@@ -1,0 +1,14 @@
+{
+  "dev": {
+    "apiUrl": "http://localhost:8080",
+    "apiPath": "/api/v1"
+  },
+  "qa": {
+    "apiUrl": "http://qa-server:8080",
+    "apiPath": "/api/v1"
+  },
+  "prod": {
+    "apiUrl": "https://automobile-parts.onrender.com",
+    "apiPath": "/api/v1"
+  }
+}

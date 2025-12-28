@@ -1,0 +1,29 @@
+.homepage-wrapper {
+  min-height: 100vh;
+}
+
+.homepage-header {
+  background-color: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.brand-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.hero-section {
+  padding-top: 3rem;
+}
+
+.company-summary .card-title {
+  font-size: 1.05rem;
+}
